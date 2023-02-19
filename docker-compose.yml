@@ -1,21 +1,26 @@
 version: '2'
 services:
   db:
-    image: mysql
+    build: ./db
     restart: always
-    environment:
-      MYSQL_DATABASE: 'test_db'
-      MYSQL_ROOT_PASSWORD: root
     ports:
       - '3307:3306'
     volumes:
-      - testing:/var/lib/mysql 
+      - task_db:/var/lib/mysql 
+    hostname: mysql-local-db
+    networks:
+      - task_network
   login:
     build: ./serv3
     ports:
       - '9001:5000'
     depends_on: 
       - db
+    hostname: login.local
+    networks:
+      task_network:
+        aliases:
+          - login.local
   tasks:
     build: ./serv4
     ports:
@@ -23,5 +28,13 @@ services:
     depends_on:
       - db
       - login
+    hostname: tasks.local
+    networks:
+      task_network:
+        aliases:
+          - tasks.local
+networks:
+  task_network:
+
 volumes:
-  testing:
+  task_db:

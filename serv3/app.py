@@ -53,7 +53,7 @@ def login():
         user = users.query.filter_by(username=login_name).first()
         if user:
             if login_pass==user.password:
-                return redirect(f"tasks/{user.id}")
+                return redirect(f"http://192.168.52.125:9002/{user.id}")
             else:
                 flash("INVALID PASSWORD")
                 return redirect('login')
