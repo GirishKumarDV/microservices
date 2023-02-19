@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}HOME{% endblock %}
+{% block content %}
+    <fieldset>
+        <legend>ADD TASKS FOR {{user.username}}</legend><br>
+        <form action="#" method="post">
+            <ul class="wrapper">
+              <li class="form-row">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+              </li>
+              <li class="form-row">
+                <label for="stack">Stack</label>
+                <input type="text" id="stack" name="stack">
+              </li>
+              <li class="form-row">
+                <label for="mentors">Mentor</label>
+                <input type="text" name="mentors" id="mentors">
+              </li>
+              <li class="form-row">
+                <button type="submit">Submit</button>
+              </li>
+            </ul>
+          </form>
+    </fieldset>
+{% endblock %}

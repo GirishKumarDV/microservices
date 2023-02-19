@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3307:3306'
+    volumes:
+      - testing:/var/lib/mysql 
+  login:
+    build: ./serv3
+    ports:
+      - '9001:5000'
+    depends_on: 
+      - db
+  tasks:
+    build: ./serv4
+    ports:
+      - '9002:5000'
+    depends_on:
+      - db
+      - login
+volumes:
+  testing:

@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %}TASKS{% endblock %} {% block content %}
+<h3>USER : {{content['user'].u_name}}</h3>
+<fieldset>
+    <legend>AVAILABLE TASKS </legend>
+    <table>
+        <tr>
+            <th>SL. NO</th>
+            <th>TASK TITLE</th>
+            <th>TECH STACK</th>
+            <th>MENTORS</th>
+
+        </tr>
+        {% for item in content['tasks'] %}
+        <tr>
+            <td>{{item}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.stack}}</td>
+            <td>{{item.mentors}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</fieldset>
+{% endblock %}

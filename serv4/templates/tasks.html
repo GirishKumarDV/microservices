@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %}TASKS{% endblock %} {% block content %}
+<fieldset>
+    <legend>YOUR TASKS</legend>
+    <table>
+        <tr>
+            <th>SL. NO</th>
+            <th>TASK TITLE</th>
+            <th>TECH STACK</th>
+            <th>MENTORS</th>
+
+        </tr>
+        {% if content['tasks'] %}
+        {% for i in range(content['count'])%}
+        <tr>
+
+            <td>{{i+1}}</td>
+            <td>{{content['tasks'][i].title}}</td>
+            <td>{{content['tasks'][i].stack}}</td>
+            <td>{{content['tasks'][i].mentors}}</td>
+            <td><a href="/delete/{{content['tasks'][i].user_id}}/{{content['tasks'][i].id}}">DELETE</a><hr><a href="/update/{{content['tasks'][i].user_id}}/{{content['tasks'][i].id}}" onclick="openForm()">UPDATE</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+
+</fieldset>
+{% endblock %}

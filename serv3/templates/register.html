@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %}REGISTER{% endblock %} {% block content %}
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+        <p style="font-family: 'Courier New', Courier, monospace; background:#ccc"> {{ message }}</p>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<form action="#" method="post">
+    <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="name"><b>UserID</b></label>
+        <input type="text" placeholder="Enter Name" name="name" id="name" required >
+        <label for="pass"><b>Password</b></label>
+        <input type="password" name="pass" id="pass" required>
+
+        <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+</form>
+<a href="login"><button class="registerbtn">ALREADY HAVE AN ACCOUNT? LOGIN</button></a>
+
+{% endblock %}
